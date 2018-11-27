@@ -26,12 +26,23 @@ const declarations = [
   Components.DashboardComponent,
   Components.AdminComponent,
   Components.GridComponent,
+  IsfilterablePipe,
+  DevicenumComponent,
+  EditmachineComponent,
+  HomeComponent,
+  EditComponent,
+  ContactComponent,
+  NavigationComponent,
+  LoginComponent,
+  LogoutComponent,
+  TabComponent,
+  TabsComponent,
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, ...declarations, IsfilterablePipe, DevicenumComponent, EditmachineComponent, HomeComponent, EditComponent,
-    ContactComponent, NavigationComponent, LoginComponent, LogoutComponent, TabComponent, TabsComponent
+    AppComponent,
+    ...declarations,
   ],
   // dynamically added components (e.g. at runtime)
   entryComponents: [LoginComponent, LogoutComponent],
