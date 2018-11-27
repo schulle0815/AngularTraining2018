@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+/* SASS-Code = includes CSS ! */
+/* ~ = look in node_modules folder */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+$height: 100%;
+$color: lightblue;
+
+html,
+body {
+  height: $height;
+  background-color: lighten($color: $color, $amount: 10%);
+}

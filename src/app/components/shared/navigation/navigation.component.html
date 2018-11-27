@@ -1,0 +1,8 @@
+<ul class="nav">
+  <li class="nav-item" *ngFor="let route of routerConfig">
+    <a class="nav-link" [routerLink]="route.path" [routerLinkActive]="'active'">
+      <i class="fa" [ngClass]="route.icon" *ngIf="route.icon"></i>
+      {{ route.text }}</a
+    >
+  </li>
+</ul>

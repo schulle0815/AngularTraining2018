@@ -1,0 +1,88 @@
+<form
+  role="form"
+  novalidate
+  (ngSubmit)="onSubmit(editMachineForm.value)"
+  #editMachineForm="ngForm"
+>
+  <div class="form-group">
+    <label for="name">Machine Name</label>
+    <input
+      type="text"
+      #name="ngModel"
+      [(ngModel)]="model.name"
+      name="name"
+      required
+      maxlength="10"
+      class="form-control"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Name"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >Great machine name!</small
+    >
+    <div
+      class="text text-danger"
+      [hidden]="name.valid || name.pristine"
+      *ngIf="name.errors && name.errors.required"
+    >
+      Name is required.
+    </div>
+    <div
+      class="text text-danger"
+      [hidden]="name.valid || name.pristine"
+      *ngIf="name.errors && name.errors.maxlength"
+    >
+      Name must have 10 chars max.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input
+      type="text"
+      #location="ngModel"
+      name="location"
+      [(ngModel)]="model.location"
+      required
+      minlength="5"
+      pattern="[A-Z]\.\d{3}"
+      class="form-control"
+      id="location"
+      placeholder="Location"
+    />
+    <div
+      class="text text-danger"
+      [hidden]="location.valid || location.pristine"
+      *ngIf="location.errors && location.errors.required"
+    >
+      Location is required.
+    </div>
+    <div
+      class="text text-danger"
+      [hidden]="location.valid || location.pristine"
+      *ngIf="location.errors && location.errors.minlength"
+    >
+      Location must have 5 chars min.
+    </div>
+    <div
+      class="text text-danger"
+      [hidden]="location.valid || location.pristine"
+      *ngIf="location.errors && location.errors.pattern"
+    >
+      Location must fulfill this pattern:
+      {{ location.errors.pattern.requiredPattern }}
+    </div>
+  </div>
+  <div class="form-group form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="hasDevices"
+      #hasDevices="ngModel"
+      [(ngModel)]="model.hasDevices"
+      name="hasDevices"
+    />
+    <label class="form-check-label" for="hasDevices">Has Devices?</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,47 @@
+<form role="search" novalidate spellcheck="false">
+  <div class="" *ngFor="let searchField of model.headers">
+    <!-- | isFilterable -->
+    <label>{{ searchField.text }}</label> <input type="text" #search />
+    <button
+      type="submit"
+      class="pointer"
+      (click)="model.filter(search.value, searchField.propName)"
+    >
+      <i class="fa fa-search pointer"></i>
+    </button>
+  </div>
+</form>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of model.headers">
+          {{ header.text }}
+          <span *ngIf="header.isSortable; else: noSort">
+            <i
+              class="fa fa-arrow-up pointer"
+              (click)="model.sort(header.propName, true)"
+            ></i>
+            <i
+              class="fa fa-arrow-down pointer"
+              (click)="model.sort(header.propName, false)"
+            ></i>
+          </span>
+          <ng-template #noSort>...</ng-template>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of model.items">
+        <td *ngFor="let header of model.headers">
+          {{ item[header.propName] }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="model.hasFooter">
+      <tr>
+        <td *ngFor="let header of model.headers">{{ header.footerData }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

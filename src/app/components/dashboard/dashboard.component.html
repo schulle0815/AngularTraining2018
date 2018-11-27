@@ -1,0 +1,35 @@
+<h2>Dashboard</h2>
+
+<app-devicenum> </app-devicenum>
+
+<ng-container
+  *ngTemplateOutlet="tpl; context: { $implicit: state, header: 'Device State' }"
+></ng-container>
+<ng-container
+  *ngTemplateOutlet="tpl; context: { $implicit: 'Hallo Bootstrap' }"
+></ng-container>
+
+<div>
+  Messages:
+  <ul *ngIf="messages">
+    <li *ngFor="let message of messages">{{ message }}</li>
+  </ul>
+  <button type="button" class="pointer" (click)="confirmMessages()">
+    Confirm
+  </button>
+</div>
+
+<!--
+  <div>
+    <p *ngFor="let m of (machineData$ | async)">{{ m.id }}</p>
+  </div>
+-->
+
+<div>Grid: <app-grid [data]="machineData"></app-grid></div>
+
+<ng-template #tpl let-content let-h="header">
+  <div class="alert alert-info">
+    <h3>{{ h }}</h3>
+    {{ content }}
+  </div>
+</ng-template>

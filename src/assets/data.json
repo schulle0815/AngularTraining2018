@@ -1,0 +1,5 @@
+[
+  { "id": 1, "location": "D.200", "name": "M1", "hasDevices": false },
+  { "id": 2, "location": "F.800", "name": "M889", "hasDevices": false },
+  { "id": 3, "location": "A.500", "name": "M23", "hasDevices": false }
+]
